@@ -3,10 +3,339 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B.K. Tours & Travels</title>
+  <title>B.K. Tours & Travels | Trips from Delhi to Anywhere in India</title>
+  <meta name="description" content="B.K. Tours & Travels, Delhi. Outstation cabs, hill station trips, pilgrimage tours, hotel and ticket bookings across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1d2a2f;
+      --muted: #5b6b70;
+      --teal: #0f5257;
+      --teal-dark: #0a3b3f;
+      --marigold: #f2a541;
+      --cream: #fbf7f0;
+      --card: #ffffff;
+      --line: #e7e0d4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; }
+    a { color: inherit; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 247, 240, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; flex-wrap: wrap; }
+    .logo { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.35rem; text-decoration: none; color: var(--teal-dark); }
+    .logo span { color: var(--marigold); }
+    .nav ul { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+    .nav ul a { text-decoration: none; font-weight: 500; font-size: 0.95rem; color: var(--muted); }
+    .nav ul a:hover { color: var(--teal); }
+
+    /* Hero */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 60%, #1b6b70 100%);
+      color: #fff;
+      padding: 90px 0 140px;
+    }
+    .hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 720px; }
+    .hero h1 em { font-style: normal; color: var(--marigold); }
+    .hero p { margin-top: 18px; max-width: 560px; font-size: 1.1rem; color: #d7e7e6; }
+    .hero .btns { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 13px 24px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 0.98rem;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-main { background: var(--marigold); color: var(--ink); }
+    .btn-ghost { border: 1.5px solid rgba(255,255,255,0.6); color: #fff; }
+    .hills { position: absolute; bottom: -2px; left: 0; width: 100%; height: 120px; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 600; color: var(--teal); }
+    section h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin: 8px 0 14px; }
+    .lead { color: var(--muted); max-width: 620px; }
+
+    .grid { display: grid; gap: 22px; margin-top: 40px; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 26px;
+    }
+    .card .icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: #fdf0dc; display: grid; place-items: center; font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.96rem; }
+
+    /* Trips */
+    .trips { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .trip { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
+    .trip .top { height: 110px; display: flex; align-items: flex-end; padding: 16px 20px; color: #fff; }
+    .trip .top h3 { font-size: 1.3rem; }
+    .trip .body { padding: 18px 20px 22px; }
+    .trip .meta { font-size: 0.85rem; font-weight: 600; color: var(--teal); margin-bottom: 6px; }
+    .trip p { color: var(--muted); font-size: 0.95rem; }
+    .t1 { background: linear-gradient(135deg, #2f6b4f, #7fa36b); }
+    .t2 { background: linear-gradient(135deg, #c9733b, #e9b44c); }
+    .t3 { background: linear-gradient(135deg, #335c81, #6f9ecf); }
+    .t4 { background: linear-gradient(135deg, #8c3b5a, #d9767f); }
+    .t5 { background: linear-gradient(135deg, #5a4a8c, #9b8fd1); }
+    .t6 { background: linear-gradient(135deg, #0f5257, #3e9a9a); }
+
+    /* Steps */
+    .steps { counter-reset: step; }
+    .step { position: relative; padding-left: 58px; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 0; top: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--teal); color: #fff; font-weight: 600;
+      display: grid; place-items: center;
+    }
+    .step h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Note */
+    .note {
+      background: var(--teal-dark); color: #e3efee; border-radius: 16px;
+      padding: 40px; display: grid; gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .note h2 { color: #fff; margin-top: 0; }
+    .note p { color: #c6dbd9; }
+    .note ul { list-style: none; display: grid; gap: 10px; }
+    .note li::before { content: "✓"; color: var(--marigold); font-weight: 700; margin-right: 10px; }
+
+    /* Contact */
+    .contact-box { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 36px; }
+    .contact-box .card a { color: var(--teal); font-weight: 600; text-decoration: none; word-break: break-word; }
+
+    footer { padding: 30px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    @media (max-width: 640px) {
+      .nav ul { gap: 14px; }
+      .hero { padding: 60px 0 120px; }
+      section { padding: 60px 0; }
+      .note { padding: 28px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>B.K. Tours & Travels</h1>
-  <p>Website coming soon.</p>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="logo">B.K. Tours <span>&amp;</span> Travels</a>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#trips">Trips</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Leaving from Delhi? <em>We'll get you there.</em></h1>
+      <p>Weekend in the hills, a family trip to Rajasthan, or a yatra you've been putting off for years. Tell us where you want to go and we'll sort out the car, the stay and the tickets.</p>
+      <div class="btns">
+        <a href="#contact" class="btn btn-main">Plan my trip</a>
+        <a href="#trips" class="btn btn-ghost">See popular trips</a>
+      </div>
+    </div>
+    <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,80 L180,30 L320,70 L480,15 L640,65 L820,25 L1000,75 L1180,20 L1440,70 L1440,120 L0,120 Z" fill="#1b6b70" opacity="0.5"/>
+      <path d="M0,100 C240,60 420,110 720,80 C1000,52 1200,105 1440,85 L1440,120 L0,120 Z" fill="#fbf7f0"/>
+    </svg>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">What we do</div>
+      <h2>Everything you need for the trip, in one place</h2>
+      <p class="lead">We're a small Delhi team, so you talk to the same person from the first call until you're back home.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">🚗</div>
+          <h3>Outstation cabs</h3>
+          <p>Sedans, SUVs and Innovas with drivers who know the routes. One way, round trip, or a few days on the road.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🚐</div>
+          <h3>Tempo travellers for groups</h3>
+          <p>Travelling with family, friends or office colleagues? 12 to 20 seaters so nobody gets left behind in a second car.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏔️</div>
+          <h3>Holiday packages</h3>
+          <p>Hill stations, heritage cities, beaches. We plan the route, book the hotels and keep the days relaxed.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛕</div>
+          <h3>Pilgrimage tours</h3>
+          <p>Char Dham, Vaishno Devi, Haridwar, Amritsar and more. Comfortable pace, good for elders.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎫</div>
+          <h3>Train and flight tickets</h3>
+          <p>Don't want to fight with booking sites at midnight? Send us your dates and we'll handle it.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✈️</div>
+          <h3>Airport and station pickups</h3>
+          <p>IGI Airport, New Delhi, Old Delhi and Nizamuddin stations. On time, even for the 4 am flights.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trips" class="trips">
+    <div class="wrap">
+      <div class="eyebrow">Where people go</div>
+      <h2>Popular trips from Delhi</h2>
+      <p class="lead">Just a few of the places we drive to most often. Every trip can be changed to suit your dates and budget.</p>
+
+      <div class="grid grid-3">
+        <div class="trip">
+          <div class="top t1"><h3>Shimla &amp; Manali</h3></div>
+          <div class="body">
+            <div class="meta">5 to 6 days · By road</div>
+            <p>Mall Road, Kufri, Solang Valley and Atal Tunnel. The classic first trip to the mountains.</p>
+          </div>
+        </div>
+        <div class="trip">
+          <div class="top t2"><h3>Jaipur, Agra &amp; Delhi</h3></div>
+          <div class="body">
+            <div class="meta">3 to 5 days · Golden Triangle</div>
+            <p>Taj Mahal at sunrise, Amber Fort and the old bazaars of the Pink City.</p>
+          </div>
+        </div>
+        <div class="trip">
+          <div class="top t3"><h3>Rishikesh &amp; Haridwar</h3></div>
+          <div class="body">
+            <div class="meta">2 to 3 days · Weekend</div>
+            <p>Ganga aarti at Har Ki Pauri, cafes by the river, and rafting if you're up for it.</p>
+          </div>
+        </div>
+        <div class="trip">
+          <div class="top t4"><h3>Char Dham Yatra</h3></div>
+          <div class="body">
+            <div class="meta">10 to 12 days · May to October</div>
+            <p>Yamunotri, Gangotri, Kedarnath and Badrinath with planned stops and rest days.</p>
+          </div>
+        </div>
+        <div class="trip">
+          <div class="top t5"><h3>Amritsar</h3></div>
+          <div class="body">
+            <div class="meta">2 to 3 days · By road or train</div>
+            <p>Golden Temple, Wagah Border ceremony, and more food than you'll be able to finish.</p>
+          </div>
+        </div>
+        <div class="trip">
+          <div class="top t6"><h3>Anywhere else in India</h3></div>
+          <div class="body">
+            <div class="meta">You choose · We plan</div>
+            <p>Goa, Kerala, Ladakh, the Northeast. If it's in India, ask us and we'll put a plan together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="eyebrow">How it works</div>
+      <h2>Booking is simple</h2>
+      <div class="grid grid-3 steps">
+        <div class="step">
+          <h3>Tell us your plan</h3>
+          <p>Call, WhatsApp or email us with where you want to go, your dates and how many people.</p>
+        </div>
+        <div class="step">
+          <h3>Get a clear quote</h3>
+          <p>We send you the full price with tolls, parking and driver charges explained upfront.</p>
+        </div>
+        <div class="step">
+          <h3>Pack your bags</h3>
+          <p>Confirm with a small advance and we take care of the rest. Driver details reach you a day before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="note">
+        <div>
+          <h2>Why book with us?</h2>
+          <p>We know booking a trip online can feel like a gamble. We keep things simple and honest, so you know exactly what you're paying for.</p>
+        </div>
+        <ul>
+          <li>No hidden charges at the end of the trip</li>
+          <li>Clean cars and experienced drivers</li>
+          <li>One contact person for your whole trip</li>
+          <li>Help on call while you're travelling</li>
+          <li>Plans that work for families and elders</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's plan your trip</h2>
+      <p class="lead">Send us a message with your destination and dates. We usually reply within a few hours.</p>
+
+      <div class="contact-box">
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Call or WhatsApp</h3>
+          <p><a href="https://wa.me/910000000000">+91 00000 00000</a></p>
+        </div>
+        <div class="card">
+          <div class="icon">✉️</div>
+          <h3>Email</h3>
+          <p><a href="mailto:kuldeep@bktoursandtravels.com">kuldeep@bktoursandtravels.com</a></p>
+        </div>
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Office</h3>
+          <p>Your office address here<br>New Delhi, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 B.K. Tours &amp; Travels, Delhi</span>
+      <span>Domestic tours and travel across India</span>
+    </div>
+  </footer>
+
 </body>
 </html>
